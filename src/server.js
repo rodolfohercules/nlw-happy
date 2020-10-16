@@ -1,11 +1,21 @@
-//importar biblioteca
 const express = require('express');
-// iniciando o express
-const server = express()
-// criar uma rota
-server.get('/', (request, response) => {
-    return response.send('oi direto do back-end')
-})
+const path = require('path');
 
-//ligar o servidor 
-server.listen(5500)
+const pages = require('./pages.js');
+
+const server = express()
+
+server
+.use(express.static('public'))
+.set('views', path.join(__dirname, 'views'))
+.set('view engine', 'hbs')
+
+server.get('/', pages.index)
+server.get('/orphanage', pages.orphanage)
+server.get('/orphanages', pages.orphanages)
+server.get('/create-orphanage', pages.createOrphanage)
+server.get('/create-volunteer', pages.createVolunteer)
+
+server.listen(5500, () => {
+    console.log ('Server started')
+})

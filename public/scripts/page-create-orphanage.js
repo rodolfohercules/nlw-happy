@@ -12,21 +12,21 @@ const icon = L.icon({
 })
 
 let marker;
-
+// create and add marker
 map.on('click', (event) => {
     const lat = event.latlng.lat
     const lng = event.latlng.lng
 
     document.querySelector('[name=lat]').value = lat
     document.querySelector('[name=lng]').value = lng
-
+    // remover icon
     marker && map.removeLayer(marker)
-
+    //add icon layer
     marker = L.marker([lat, lng], { icon })
     .addTo(map)
 })
 
-
+//adicionar o campo de fotos
 function addPhotoField() {
     const container = document.querySelector('#images');
 

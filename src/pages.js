@@ -22,4 +22,4 @@ module.exports = {
         return res.render('orphanages', { orphanages })
     }
     
-} 
+};

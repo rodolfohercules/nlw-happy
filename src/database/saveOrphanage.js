@@ -4,18 +4,18 @@ function saveOrphanage(db, orphanage) {
           lat, 
           lng,
           name,
-          about,
-          whatsap,
+          whatsapp,
+          about,          
           images,
-          instructions,
+          instructions, 
           opening_hours,
           open_on_weekends
       ) VALUES (
           "${orphanage.lat}",
           "${orphanage.lng}",
           "${orphanage.name}",
-          "${orphanage.about}",
           "${orphanage.whatsapp}",
+          "${orphanage.about}",
           "${orphanage.images}",
           "${orphanage.instructions}",
           "${orphanage.opening_hours}",
@@ -24,4 +24,4 @@ function saveOrphanage(db, orphanage) {
     `);
   }
   
-  module.exports = saveOrphanage;
+  module.exports = saveOrphanage; 

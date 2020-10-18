@@ -73,4 +73,4 @@ module.exports = {
             return res.send("Erro no banco de dados");
     }
   },
-};         
+};            

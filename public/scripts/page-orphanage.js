@@ -18,8 +18,10 @@ const icon = L.icon({
     popAnchor: [170, 2]
 })
 
+const spanLat = document.querySelector('span[data-lat]')
+const spanLng = document.querySelector('span[data-lng]')
 L
-.marker([-27.2109325,-49.6448719], { icon })
+.marker([spanLat.dataset.lat,spanLng.dataset.lng], { icon })
 .addTo(map)
 
 

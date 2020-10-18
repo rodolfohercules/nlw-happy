@@ -1,21 +1,26 @@
+// import libraries and dependecies
 const express = require('express');
 const path = require('path');
+const pages = require('./pages.js')
 
-const pages = require('./pages.js');
-
-const server = express()
-
+// start express
+const server = express();
 server
-.use(express.static('public'))
-.set('views', path.join(__dirname, 'views'))
-.set('view engine', 'hbs')
+    // use req.body 
+    .use(express.urlencoded({ extended: true }))
+    // using static files
+    .use(express.static('public'))
+    // configure template engine t
+    .set('views', path.join(__dirname, "views"))
+    .set('view engine', 'hbs')
 
-server.get('/', pages.index)
-server.get('/orphanage', pages.orphanage)
-server.get('/orphanages', pages.orphanages)
-server.get('/create-orphanage', pages.createOrphanage)
-server.get('/create-volunteer', pages.createVolunteer)
+    // route page create
+    .get('/', pages.index)
+    .get('/orphanage', pages.orphanage)
+    .get('/orphanages', pages.orphanages)
+    .get('/create-orphanage', pages.createOrphanage)
+    .get('/create-volunteer', pages.createVolunteer)
+    .post('/save-orphanage', pages.saveOrphanage)
 
-server.listen(5500, () => {
-    console.log ('Server started')
-})
+// open server 
+server.listen(5500)
